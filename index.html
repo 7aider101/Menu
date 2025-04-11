@@ -15,6 +15,10 @@
     referrerpolicy="no-referrer"
   />
   <style>
+    /* تنقل سلس عند الضغط على الروابط */
+    html {
+      scroll-behavior: smooth;
+    }
     :root {
       --primary-color: #2c3e50;
       --secondary-color: #e74c3c;
@@ -299,7 +303,6 @@
     <div class="category" id="hot-dishes">
       <h2><i class="fas fa-pepper-hot"></i> المأكولات الحارة</h2>
       <div class="menu-grid">
-        <!-- لكل عنصر يتم إضافة صورة وبيانات للتفاصيل (data-title, data-price, data-description) -->
         <div class="menu-item" data-title="فاهيتا لحم" data-price="IQD 4000" data-description="طبق شهي من الفاهيتا باللحم يقدم مع صلصة خاصة." data-img="https://via.placeholder.com/400x300?text=فاهيتا+لحم">
           <img src="https://via.placeholder.com/400x300?text=فاهيتا+لحم" alt="فاهيتا لحم">
           <div class="item-name">فاهيتا لحم</div>
@@ -321,7 +324,7 @@
           <div class="item-price">IQD 4000</div>
         </div>
         <div class="menu-item" data-title="بيتزا خضار" data-price="IQD 5000" data-description="بيتزا خضار طازجة مع مجموعة مختارة من الخضروات." data-img="https://via.placeholder.com/400x300?text=بيتزا+خضار">
-          <img src="Eq_it-na_pizza-margherita_sep2005_sml.jpg" alt="بيتزا خضار">
+          <img src="https://via.placeholder.com/400x300?text=بيتزا+خضار" alt="بيتزا خضار">
           <div class="item-name">بيتزا خضار</div>
           <div class="item-price">IQD 5000</div>
         </div>
@@ -468,4 +471,214 @@
           <div class="item-name">أمريكانو</div>
           <div class="item-price">IQD 2000</div>
         </div>
-        <div class="menu-item" data-title="شاي كرك" data-price="IQD 2000" data-description="شاي كرك بلمسة التوابل الهندية." data-img="https://via.placeho
+         <div class="menu-item" data-title="شاي كرك" data-price="IQD 2000" data-description="شاي كرك بلمسة التوابل الهندية." data-img="https://via.placeholder.com/400x300?text=شاي+كرك">
+          <img src="https://via.placeholder.com/400x300?text=شاي+كرك" alt="شاي كرك">
+          <div class="item-name">شاي كرك</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+        <div class="menu-item" data-title="هوت شوكليت" data-price="IQD 3000" data-description="مشروب هوت شوكليت دافئ مع لمسة من الكاكاو." data-img="https://via.placeholder.com/400x300?text=هوت+شوكليت">
+          <img src="https://via.placeholder.com/400x300?text=هوت+شوكليت" alt="هوت شوكليت">
+          <div class="item-name">هوت شوكليت</div>
+          <div class="item-price">IQD 3000</div>
+        </div>
+        <div class="menu-item" data-title="كوفي موكا" data-price="IQD 3000" data-description="موكا لذيذة مع مزيج القهوة والشوكولاته." data-img="https://via.placeholder.com/400x300?text=كوفي+موكا">
+          <img src="https://via.placeholder.com/400x300?text=كوفي+موكا" alt="كوفي موكا">
+          <div class="item-name">كوفي موكا</div>
+          <div class="item-price">IQD 3000</div>
+        </div>
+        <div class="menu-item" data-title="زهورات" data-price="IQD 2000" data-description="مشروب زهورات منعش مع نكهة الزهور." data-img="https://via.placeholder.com/400x300?text=زهورات">
+          <img src="https://via.placeholder.com/400x300?text=زهورات" alt="زهورات">
+          <div class="item-name">زهورات</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- قسم المشروبات الباردة -->
+    <div class="category" id="cold-drinks">
+      <h2><i class="fas fa-wine-glass-alt"></i> المشروبات الباردة</h2>
+      <div class="menu-grid">
+        <div class="menu-item" data-title="مشروبات غازية بأنواعها" data-price="IQD 1000" data-description="مشروبات غازية متنوعة بنكهة منعشة." data-img="https://via.placeholder.com/400x300?text=مشروبات+غازية">
+          <img src="https://via.placeholder.com/400x300?text=مشروبات+غازية" alt="مشروبات غازية بأنواعها">
+          <div class="item-name">مشروبات غازية بأنواعها</div>
+          <div class="item-price">IQD 1000</div>
+        </div>
+        <div class="menu-item" data-title="عصائر جاهزة بأنواعها" data-price="IQD 1500" data-description="عصائر جاهزة بنكهات متعددة." data-img="https://via.placeholder.com/400x300?text=عصائر+جاهزة">
+          <img src="https://via.placeholder.com/400x300?text=عصائر+جاهزة" alt="عصائر جاهزة بأنواعها">
+          <div class="item-name">عصائر جاهزة بأنواعها</div>
+          <div class="item-price">IQD 1500</div>
+        </div>
+        <div class="menu-item" data-title="عصائر فريش (برتقال / ليمون ونعنع)" data-price="IQD 2000" data-description="عصائر فريش طبيعية من الفاكهة الطازجة." data-img="https://via.placeholder.com/400x300?text=عصائر+فريش">
+          <img src="https://via.placeholder.com/400x300?text=عصائر+فريش" alt="عصائر فريش (برتقال / ليمون ونعنع)">
+          <div class="item-name">عصائر فريش (برتقال / ليمون ونعنع)</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+        <div class="menu-item" data-title="عصير رمان" data-price="IQD 2500" data-description="عصير رمان طبيعي ومنعش." data-img="https://via.placeholder.com/400x300?text=عصير+رمان">
+          <img src="https://via.placeholder.com/400x300?text=عصير+رمان" alt="عصير رمان">
+          <div class="item-name">عصير رمان</div>
+          <div class="item-price">IQD 2500</div>
+        </div>
+        <div class="menu-item" data-title="عصير أفوكادو مع قشطة وعسل" data-price="IQD 4000" data-description="عصير أفوكادو مميز مع قشطة وعسل طبيعي." data-img="https://via.placeholder.com/400x300?text=عصير+أفوكادو">
+          <img src="https://via.placeholder.com/400x300?text=عصير+أفوكادو" alt="عصير أفوكادو مع قشطة وعسل">
+          <div class="item-name">عصير أفوكادو مع قشطة وعسل</div>
+          <div class="item-price">IQD 4000</div>
+        </div>
+        <div class="menu-item" data-title="ميلك شيك فراولة" data-price="IQD 3750" data-description="ميلك شيك فراولة لذيذ ومنعش." data-img="https://via.placeholder.com/400x300?text=ميلك+شيك+فراولة">
+          <img src="https://via.placeholder.com/400x300?text=ميلك+شيك+فراولة" alt="ميلك شيك فراولة">
+          <div class="item-name">ميلك شيك فراولة</div>
+          <div class="item-price">IQD 3750</div>
+        </div>
+        <div class="menu-item" data-title="موكا بارد" data-price="IQD 3000" data-description="موكا بارد مع ثلج ونكهة الشوكولاتة." data-img="https://via.placeholder.com/400x300?text=موكا+بارد">
+          <img src="https://via.placeholder.com/400x300?text=موكا+بارد" alt="موكا بارد">
+          <div class="item-name">موكا بارد</div>
+          <div class="item-price">IQD 3000</div>
+        </div>
+        <div class="menu-item" data-title="فانيلا شيك" data-price="IQD 3000" data-description="فانيلا شيك بنكهة الفانيليا الكلاسيكية." data-img="https://via.placeholder.com/400x300?text=فانيلا+شيك">
+          <img src="https://via.placeholder.com/400x300?text=فانيلا+شيك" alt="فانيلا شيك">
+          <div class="item-name">فانيلا شيك</div>
+          <div class="item-price">IQD 3000</div>
+        </div>
+        <div class="menu-item" data-title="آيس لاتيه" data-price="IQD 3500" data-description="آيس لاتيه بارد مع طعم القهوة المميز." data-img="https://via.placeholder.com/400x300?text=آيس+لاتيه">
+          <img src="https://via.placeholder.com/400x300?text=آيس+لاتيه" alt="آيس لاتيه">
+          <div class="item-name">آيس لاتيه</div>
+          <div class="item-price">IQD 3500</div>
+        </div>
+        <div class="menu-item" data-title="آيس تي (ليمون / خوخ)" data-price="IQD 2000" data-description="آيس تي منعش بنكهات الليمون أو الخوخ." data-img="https://via.placeholder.com/400x300?text=آيس+تي">
+          <img src="https://via.placeholder.com/400x300?text=آيس+تي" alt="آيس تي (ليمون / خوخ)">
+          <div class="item-name">آيس تي (ليمون / خوخ)</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+        <div class="menu-item" data-title="سلاش فراولة" data-price="IQD 2000" data-description="سلاش فراولة منعش مع قوام ناعم." data-img="https://via.placeholder.com/400x300?text=سلاش+فراولة">
+          <img src="https://via.placeholder.com/400x300?text=سلاش+فراولة" alt="سلاش فراولة">
+          <div class="item-name">سلاش فراولة</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+        <div class="menu-item" data-title="سلاش موز وحليب" data-price="IQD 2000" data-description="سلاش موز مع حليب بنكهة طبيعية." data-img="https://via.placeholder.com/400x300?text=سلاش+موز+وحليب">
+          <img src="https://via.placeholder.com/400x300?text=سلاش+موز+وحليب" alt="سلاش موز وحليب">
+          <div class="item-name">سلاش موز وحليب</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+        <div class="menu-item" data-title="سلاش موز ورمان" data-price="IQD 2500" data-description="سلاش موز ممزوج برمان لمن يبحث عن نكهة مميزة." data-img="https://via.placeholder.com/400x300?text=سلاش+موز+ورمان">
+          <img src="https://via.placeholder.com/400x300?text=سلاش+موز+ورمان" alt="سلاش موز ورمان">
+          <div class="item-name">سلاش موز ورمان</div>
+          <div class="item-price">IQD 2500</div>
+        </div>
+        <div class="menu-item" data-title="عصير بينا كولادا" data-price="IQD 3000" data-description="عصير بينا كولادا استوائي مع نكهة جوز الهند." data-img="https://via.placeholder.com/400x300?text=عصير+بينا+كولادا">
+          <img src="https://via.placeholder.com/400x300?text=عصير+بينا+كولادا" alt="عصير بينا كولادا">
+          <div class="item-name">عصير بينا كولادا</div>
+          <div class="item-price">IQD 3000</div>
+        </div>
+        <div class="menu-item" data-title="عصير تروبيكان" data-price="IQD 3000" data-description="عصير تروبيكان بنكهة استوائية منعشة." data-img="https://via.placeholder.com/400x300?text=عصير+تروبيكان">
+          <img src="https://via.placeholder.com/400x300?text=عصير+تروبيكان" alt="عصير تروبيكان">
+          <div class="item-name">عصير تروبيكان</div>
+          <div class="item-price">IQD 3000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- قسم الكوكتيل -->
+    <div class="category" id="cocktails">
+      <h2><i class="fas fa-blender"></i> كوكتيل</h2>
+      <div class="menu-grid">
+        <div class="menu-item" data-title="كوكتيل فواكه مشكل" data-price="IQD 3000" data-description="كوكتيل فواكه طازجة مع مزيج من النكهات." data-img="https://via.placeholder.com/400x300?text=كوكتيل+فواكه">
+          <img src="https://via.placeholder.com/400x300?text=كوكتيل+فواكه" alt="كوكتيل فواكه مشكل">
+          <div class="item-name">كوكتيل فواكه مشكل</div>
+          <div class="item-price">IQD 3000</div>
+        </div>
+        <div class="menu-item" data-title="موهيتو فراولة" data-price="IQD 5000" data-description="موهيتو فراولة منعش مع نعناع." data-img="https://via.placeholder.com/400x300?text=موهيتو+فراولة">
+          <img src="https://via.placeholder.com/400x300?text=موهيتو+فراولة" alt="موهيتو فراولة">
+          <div class="item-name">موهيتو فراولة</div>
+          <div class="item-price">IQD 5000</div>
+        </div>
+        <div class="menu-item" data-title="موهيتو ليمون ونعنع" data-price="IQD 5000" data-description="موهيتو ليمون مع نعناع طازج." data-img="https://via.placeholder.com/400x300?text=موهيتو+ليمون">
+          <img src="https://via.placeholder.com/400x300?text=موهيتو+ليمون" alt="موهيتو ليمون ونعنع">
+          <div class="item-name">موهيتو ليمون ونعنع</div>
+          <div class="item-price">IQD 5000</div>
+        </div>
+        <div class="menu-item" data-title="باشن فروت" data-price="IQD 5000" data-description="عصير باشن فروت مع نكهة فريدة." data-img="https://via.placeholder.com/400x300?text=باشن+فروت">
+          <img src="https://via.placeholder.com/400x300?text=باشن+فروت" alt="باشن فروت">
+          <div class="item-name">باشن فروت</div>
+          <div class="item-price">IQD 5000</div>
+        </div>
+        <div class="menu-item" data-title="بلو + ريد بول" data-price="IQD 6000" data-description="كوكتيل مميز مع مزيج بلو وريد بول." data-img="https://via.placeholder.com/400x300?text=بلو+ريد+بول">
+          <img src="https://via.placeholder.com/400x300?text=بلو+ريد+بول" alt="بلو + ريد بول">
+          <div class="item-name">بلو + ريد بول</div>
+          <div class="item-price">IQD 6000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- قسم معلومات التواصل والحقوق -->
+    <div class="category" id="contact" style="text-align: center; margin-top: 40px;">
+      <h2><i class="fas fa-address-book"></i> تواصل معنا</h2>
+      <p>للتواصل مع المنشى: <strong>example@example.com</strong> - هاتف: <strong>+964 123 4567</strong></p>
+      <p class="footer-extra">تصميم وبرمجة:   - جميع الحقوق محفوظة.</p>
+    </div>
+  </div>
+  
+  <!-- الفوتر -->
+  <footer>
+    © 2025 مطعم وكافيه تيتو. جميع الحقوق محفوظة.
+    <div class="footer-extra">
+      للتواصل: example@example.com - هاتف: +964 123 4567 | تصميم وبرمجة:
+    </div>
+  </footer>
+
+  <!-- نافذة منبثقة لعرض تفاصيل المنتج -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose"><i class="fas fa-times"></i></span>
+      <img src="" alt="صورة المنتج" id="modalImg">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <p><strong id="modalPrice"></strong></p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // تفعيل زر تبديل قائمة التنقل في الشاشات الصغيرة
+      const navToggle = document.getElementById('navToggle');
+      const navMenu = document.getElementById('navMenu');
+      navToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+      });
+
+      // التعامل مع النافذة المنبثقة لتفاصيل المنتج
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modalImg');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalPrice = document.getElementById('modalPrice');
+      const modalClose = document.getElementById('modalClose');
+
+      // عند الضغط على أي عنصر من عناصر المنيو
+      const menuItems = document.querySelectorAll('.menu-item');
+      menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const imgSrc = item.getAttribute('data-img') || item.querySelector('img').src;
+          const title = item.getAttribute('data-title');
+          const price = item.getAttribute('data-price');
+          const description = item.getAttribute('data-description');
+
+          modalImg.src = imgSrc;
+          modalTitle.textContent = title;
+          modalPrice.textContent = price;
+          modalDescription.textContent = description;
+          modal.classList.add('active');
+        });
+      });
+
+      // إغلاق النافذة عند الضغط على زر الإغلاق أو خارج المحتوى
+      modalClose.addEventListener('click', function() {
+        modal.classList.remove('active');
+      });
+      window.addEventListener('click', function(e) {
+        if(e.target === modal) {
+          modal.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

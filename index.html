@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منيو مطعم وكافيه تيتو</title>
+  <!-- استدعاء خط Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <!-- استدعاء مكتبة Font Awesome للأيقونات -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanwMG4myd1ZNRfOI7fLPHlZBq5lMZ/GTG1dHTQzy6J5VjQp0cN8S0A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #e74c3c;
+      --accent-color: #f39c12;
+      --background-color: #f5f6fa;
+      --text-color: #333;
+      --nav-bg: rgba(255, 255, 255, 0.9);
+    }
+    /* إعدادات عامة */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      direction: rtl;
+    }
+    /* الترويسة */
+    header {
+      position: relative;
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://via.placeholder.com/1200x400/2c3e50/ffffff?text=Modern+Design') no-repeat center center;
+      background-size: cover;
+      opacity: 0.2;
+      filter: blur(4px);
+      z-index: 0;
+    }
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #f1f1f1;
+      margin-bottom: 30px;
+    }
+    /* زر تبديل القائمة (للهواتف) */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    /* شريط التنقل */
+    nav {
+      background: var(--nav-bg);
+      display: inline-block;
+      border-radius: 50px;
+      padding: 5px 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 15px;
+    }
+    nav ul li a {
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 30px;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.3s;
+    }
+    nav ul li a:hover {
+      background: var(--secondary-color);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: inline-block;
+      }
+      nav ul {
+        flex-direction: column;
+        display: none;
+        align-items: center;
+        margin-top: 10px;
+      }
+      nav ul.active {
+        display: flex;
+      }
+    }
+    /* حاوية المحتوى */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .note {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #555;
+    }
+    /* أقسام القائمة */
+    .category {
+      margin-bottom: 60px;
+      animation: fadeInUp 1s ease-out;
+    }
+    .category h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      border-bottom: 3px solid var(--accent-color);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    .category h2 i {
+      margin-left: 10px;
+      color: var(--secondary-color);
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    /* كل عنصر من عناصر المنيو مع الصورة */
+    .menu-item {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .menu-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .menu-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      transition: opacity 0.3s;
+    }
+    .menu-item img:hover {
+      opacity: 0.9;
+    }
+    .item-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+    .item-price {
+      font-size: 1.1rem;
+      color: var(--accent-color);
+    }
+    /* الفوتر */
+    footer {
+      background: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.95rem;
+      margin-top: 40px;
+    }
+    .footer-extra {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+    /* حركة ظهور الأقسام */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* أنماط النافذة المنبثقة (Modal) */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      background: #fff;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      padding: 20px;
+      position: relative;
+      animation: fadeInUp 0.5s ease;
+      text-align: center;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      cursor: pointer;
+    }
+    .modal-content img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- الترويسة مع اللوجو وشريط التنقل -->
+  <header>
+    <div class="header-content">
+      <!-- مكان عرض اللوجو -->
+      <img src="a76cb0f1ab6950f4884c8c07fb3721e4.jpg" alt="Logo" class="logo" />
+      <h1>منيو مطعم وكافيه تيتو</h1>
+      <p>أشهى المأكولات والمشروبات على الإطلاق</p>
+      <!-- زر تبديل القائمة للهاتف -->
+      <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+      <!-- شريط التنقل -->
+      <nav>
+        <ul id="navMenu">
+          <li><a href="#hot-dishes"><i class="fas fa-pepper-hot"></i> المأكولات الحارة</a></li>
+          <li><a href="#pastries"><i class="fas fa-birthday-cake"></i> المعجنات والحلويات</a></li>
+          <li><a href="#salads"><i class="fas fa-seedling"></i> السلطات</a></li>
+          <li><a href="#cold-dishes"><i class="fas fa-snowflake"></i> المأكولات الباردة</a></li>
+          <li><a href="#hot-drinks"><i class="fas fa-mug-hot"></i> المشروبات الحارة</a></li>
+          <li><a href="#cold-drinks"><i class="fas fa-wine-glass-alt"></i> المشروبات الباردة</a></li>
+          <li><a href="#cocktails"><i class="fas fa-blender"></i> كوكتيل</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- حاوية المحتوى -->
+  <div class="container">
+    <!-- ملاحظة -->
+    <p class="note">نأسف لعدم جاهزية النسخة الأصلية حالياً</p>
+
+    <!-- قسم المأكولات الحارة -->
+    <div class="category" id="hot-dishes">
+      <h2><i class="fas fa-pepper-hot"></i> المأكولات الحارة</h2>
+      <div class="menu-grid">
+        <!-- لكل عنصر يتم إضافة صورة وبيانات للتفاصيل (data-title, data-price, data-description) -->
+        <div class="menu-item" data-title="فاهيتا لحم" data-price="IQD 4000" data-description="طبق شهي من الفاهيتا باللحم يقدم مع صلصة خاصة." data-img="https://via.placeholder.com/400x300?text=فاهيتا+لحم">
+          <img src="https://via.placeholder.com/400x300?text=فاهيتا+لحم" alt="فاهيتا لحم">
+          <div class="item-name">فاهيتا لحم</div>
+          <div class="item-price">IQD 4000</div>
+        </div>
+        <div class="menu-item" data-title="فاهيتا دجاج" data-price="IQD 3500" data-description="فاهيتا دجاج بنكهة مميزة." data-img="https://via.placeholder.com/400x300?text=فاهيتا+دجاج">
+          <img src="https://via.placeholder.com/400x300?text=فاهيتا+دجاج" alt="فاهيتا دجاج">
+          <div class="item-name">فاهيتا دجاج</div>
+          <div class="item-price">IQD 3500</div>
+        </div>
+        <div class="menu-item" data-title="فيلادلفيا لحم" data-price="IQD 4500" data-description="فيلادلفيا باللحم مع جبنة كريمية." data-img="https://via.placeholder.com/400x300?text=فيلادلفيا+لحم">
+          <img src="https://via.placeholder.com/400x300?text=فيلادلفيا+لحم" alt="فيلادلفيا لحم">
+          <div class="item-name">فيلادلفيا لحم</div>
+          <div class="item-price">IQD 4500</div>
+        </div>
+        <div class="menu-item" data-title="فيلادلفيا دجاج" data-price="IQD 4000" data-description="فيلادلفيا بالدجاج مع صلصة مبتكرة." data-img="https://via.placeholder.com/400x300?text=فيلادلفيا+دجاج">
+          <img src="https://via.placeholder.com/400x300?text=فيلادلفيا+دجاج" alt="فيلادلفيا دجاج">
+          <div class="item-name">فيلادلفيا دجاج</div>
+          <div class="item-price">IQD 4000</div>
+        </div>
+        <div class="menu-item" data-title="بيتزا خضار" data-price="IQD 5000" data-description="بيتزا خضار طازجة مع مجموعة مختارة من الخضروات." data-img="https://via.placeholder.com/400x300?text=بيتزا+خضار">
+          <img src="https://via.placeholder.com/400x300?text=بيتزا+خضار" alt="بيتزا خضار">
+          <div class="item-name">بيتزا خضار</div>
+          <div class="item-price">IQD 5000</div>
+        </div>
+        <div class="menu-item" data-title="بيتزا بيبروني" data-price="IQD 6000" data-description="بيتزا بيبروني غنية بالنكهات." data-img="https://via.placeholder.com/400x300?text=بيتزا+بيبروني">
+          <img src="https://via.placeholder.com/400x300?text=بيتزا+بيبروني" alt="بيتزا بيبروني">
+          <div class="item-name">بيتزا بيبروني</div>
+          <div class="item-price">IQD 6000</div>
+        </div>
+        <div class="menu-item" data-title="شوربة دجاج" data-price="IQD 2000" data-description="شوربة دجاج مغذية وساخنة." data-img="https://via.placeholder.com/400x300?text=شوربة+دجاج">
+          <img src="https://via.placeholder.com/400x300?text=شوربة+دجاج" alt="شوربة دجاج">
+          <div class="item-name">شوربة دجاج</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+        <div class="menu-item" data-title="صحن معكرونة" data-price="IQD 4000" data-description="معكرونة بصلصة طماطم مع لمسة إيطالية." data-img="https://via.placeholder.com/400x300?text=معكرونة">
+          <img src="https://via.placeholder.com/400x300?text=معكرونة" alt="صحن معكرونة">
+          <div class="item-name">صحن معكرونة</div>
+          <div class="item-price">IQD 4000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- قسم المعجنات والحلويات -->
+    <div class="category" id="pastries">
+      <h2><i class="fas fa-birthday-cake"></i> المعجنات والحلويات</h2>
+      <div class="menu-grid">
+        <div class="menu-item" data-title="كرواسون" data-price="IQD 1500" data-description="كرواسون هش ولذيذ مع زبدة طبيعية." data-img="https://via.placeholder.com/400x300?text=كرواسون">
+          <img src="https://via.placeholder.com/400x300?text=كرواسون" alt="كرواسون">
+          <div class="item-name">كرواسون</div>
+          <div class="item-price">IQD 1500</div>
+        </div>
+        <div class="menu-item" data-title="يورك (جين / أدم / دجاج)" data-price="IQD 3000" data-description="معجنات محشوة بنكهات متعددة حسب الطلب." data-img="https://via.placeholder.com/400x300?text=يورك">
+          <img src="https://via.placeholder.com/400x300?text=يورك" alt="يورك">
+          <div class="item-name">يورك (جين / أدم / دجاج)</div>
+          <div class="item-price">IQD 3000</div>
+        </div>
+        <div class="menu-item" data-title="كريب نوتيلا" data-price="IQD 2000" data-description="كريب مع نوتيلا طازجة ومزين بالفواكه." data-img="https://via.placeholder.com/400x300?text=كريب+نوتيلا">
+          <img src="https://via.placeholder.com/400x300?text=كريب+نوتيلا" alt="كريب نوتيلا">
+          <div class="item-name">كريب نوتيلا</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+        <div class="menu-item" data-title="وافل بالمكسرات" data-price="IQD 2500" data-description="وافل مقرمش مع مكسرات مختارة." data-img="https://via.placeholder.com/400x300?text=وافل">
+          <img src="https://via.placeholder.com/400x300?text=وافل" alt="وافل بالمكسرات">
+          <div class="item-name">وافل بالمكسرات</div>
+          <div class="item-price">IQD 2500</div>
+        </div>
+        <div class="menu-item" data-title="كيك" data-price="IQD 3000" data-description="كيك طازج مع طبقات من الكريمة." data-img="https://via.placeholder.com/400x300?text=كيك">
+          <img src="https://via.placeholder.com/400x300?text=كيك" alt="كيك">
+          <div class="item-name">كيك</div>
+          <div class="item-price">IQD 3000</div>
+        </div>
+        <div class="menu-item" data-title="تراب الملوك" data-price="IQD 3500" data-description="حلويات تقليدية بنكهات مميزة." data-img="https://via.placeholder.com/400x300?text=تراب+الملوك">
+          <img src="https://via.placeholder.com/400x300?text=تراب+الملوك" alt="تراب الملوك">
+          <div class="item-name">تراب الملوك</div>
+          <div class="item-price">IQD 3500</div>
+        </div>
+        <div class="menu-item" data-title="ترايفل" data-price="IQD 3500" data-description="حلوى ترايفل مع طبقات متعددة من النكهات." data-img="https://via.placeholder.com/400x300?text=ترايفل">
+          <img src="https://via.placeholder.com/400x300?text=ترايفل" alt="ترايفل">
+          <div class="item-name">ترايفل</div>
+          <div class="item-price">IQD 3500</div>
+        </div>
+        <div class="menu-item" data-title="كريم باف" data-price="IQD 2000" data-description="كريم باف هش مع طبقة من الكريمة." data-img="https://via.placeholder.com/400x300?text=كريم+باف">
+          <img src="https://via.placeholder.com/400x300?text=كريم+باف" alt="كريم باف">
+          <div class="item-name">كريم باف</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- قسم السلطات -->
+    <div class="category" id="salads">
+      <h2><i class="fas fa-seedling"></i> السلطات</h2>
+      <div class="menu-grid">
+        <div class="menu-item" data-title="فتوش" data-price="IQD 2000" data-description="سلطة فتوش طازجة مع صلصة الليمون." data-img="https://via.placeholder.com/400x300?text=فتوش">
+          <img src="https://via.placeholder.com/400x300?text=فتوش" alt="فتوش">
+          <div class="item-name">فتوش</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+        <div class="menu-item" data-title="سلطة فواكه" data-price="IQD 3000" data-description="سلطة فواكه متنوعة مع صوص العسل." data-img="https://via.placeholder.com/400x300?text=سلطة+فواكه">
+          <img src="https://via.placeholder.com/400x300?text=سلطة+فواكه" alt="سلطة فواكه">
+          <div class="item-name">سلطة فواكه</div>
+          <div class="item-price">IQD 3000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- قسم المأكولات الباردة -->
+    <div class="category" id="cold-dishes">
+      <h2><i class="fas fa-snowflake"></i> المأكولات الباردة</h2>
+      <div class="menu-grid">
+        <div class="menu-item" data-title="لفات بيض" data-price="IQD 3000" data-description="لفات بيض مع توابل مميزة." data-img="https://via.placeholder.com/400x300?text=لفات+بيض">
+          <img src="https://via.placeholder.com/400x300?text=لفات+بيض" alt="لفات بيض">
+          <div class="item-name">لفات بيض</div>
+          <div class="item-price">IQD 3000</div>
+        </div>
+        <div class="menu-item" data-title="كلوب ساندوش" data-price="IQD 4500" data-description="كلوب ساندوش طازج مع مكونات مختارة." data-img="https://via.placeholder.com/400x300?text=كلوب+ساندوش">
+          <img src="https://via.placeholder.com/400x300?text=كلوب+ساندوش" alt="كلوب ساندوش">
+          <div class="item-name">كلوب ساندوش</div>
+          <div class="item-price">IQD 4500</div>
+        </div>
+        <div class="menu-item" data-title="ميني برجر" data-price="IQD 4000" data-description="ميني برجر صغير مع صوص خاص." data-img="https://via.placeholder.com/400x300?text=ميني+برجر">
+          <img src="https://via.placeholder.com/400x300?text=ميني+برجر" alt="ميني برجر">
+          <div class="item-name">ميني برجر</div>
+          <div class="item-price">IQD 4000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- قسم المشروبات الحارة -->
+    <div class="category" id="hot-drinks">
+      <h2><i class="fas fa-mug-hot"></i> المشروبات الحارة</h2>
+      <div class="menu-grid">
+        <div class="menu-item" data-title="شاي" data-price="IQD 1000" data-description="شاي ساخن مع نكهة الليمون." data-img="https://via.placeholder.com/400x300?text=شاي">
+          <img src="https://via.placeholder.com/400x300?text=شاي" alt="شاي">
+          <div class="item-name">شاي</div>
+          <div class="item-price">IQD 1000</div>
+        </div>
+        <div class="menu-item" data-title="قهوة تركية عادي" data-price="IQD 2000" data-description="قهوة تركية عطرية بنكهة تقليدية." data-img="https://via.placeholder.com/400x300?text=قهوة+تركية+عادي">
+          <img src="https://via.placeholder.com/400x300?text=قهوة+تركية+عادي" alt="قهوة تركية عادي">
+          <div class="item-name">قهوة تركية عادي</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+        <div class="menu-item" data-title="قهوة تركية دبل" data-price="IQD 2500" data-description="قهوة تركية دبل لمحبي النكهة القوية." data-img="https://via.placeholder.com/400x300?text=قهوة+تركية+دبل">
+          <img src="https://via.placeholder.com/400x300?text=قهوة+تركية+دبل" alt="قهوة تركية دبل">
+          <div class="item-name">قهوة تركية دبل</div>
+          <div class="item-price">IQD 2500</div>
+        </div>
+        <div class="menu-item" data-title="قهوة فرنسية" data-price="IQD 2500" data-description="قهوة فرنسية فاخرة مع رغوة غنية." data-img="https://via.placeholder.com/400x300?text=قهوة+فرنسية">
+          <img src="https://via.placeholder.com/400x300?text=قهوة+فرنسية" alt="قهوة فرنسية">
+          <div class="item-name">قهوة فرنسية</div>
+          <div class="item-price">IQD 2500</div>
+        </div>
+        <div class="menu-item" data-title="اسبريسو" data-price="IQD 2000" data-description="اسبريسو مركز لمحبي القهوة القوية." data-img="https://via.placeholder.com/400x300?text=اسبريسو">
+          <img src="https://via.placeholder.com/400x300?text=اسبريسو" alt="اسبريسو">
+          <div class="item-name">اسبريسو</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+        <div class="menu-item" data-title="اسبريسو دبل" data-price="IQD 2500" data-description="اسبريسو دبل لمن يبحث عن جرعة مضاعفة من الكافيين." data-img="https://via.placeholder.com/400x300?text=اسبريسو+دبل">
+          <img src="https://via.placeholder.com/400x300?text=اسبريسو+دبل" alt="اسبريسو دبل">
+          <div class="item-name">اسبريسو دبل</div>
+          <div class="item-price">IQD 2500</div>
+        </div>
+        <div class="menu-item" data-title="أمريكانو" data-price="IQD 2000" data-description="أمريكانو خفيف مع لمسة نكهة." data-img="https://via.placeholder.com/400x300?text=أمريكانو">
+          <img src="https://via.placeholder.com/400x300?text=أمريكانو" alt="أمريكانو">
+          <div class="item-name">أمريكانو</div>
+          <div class="item-price">IQD 2000</div>
+        </div>
+        <div class="menu-item" data-title="شاي كرك" data-price="IQD 2000" data-description="شاي كرك بلمسة التوابل الهندية." data-img="https://via.placeho

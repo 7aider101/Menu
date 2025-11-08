@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>منيو مطعم وكافيه تيتو</title>
+  <meta name="description" content="منيو مطعم وكافيه تيتو — مأكولات ومشروبات مميزة" />
+
+  <!-- خط Tajawal -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- أيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-zN6H2m+..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- ملف الأنماط المفصول -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- زر الوضع المظلم + شعار صغير -->
+  <header class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="0d8ca1df3f6d7a28d9cee6c66f6d36a8.jpg" alt="Tito Logo" class="logo" />
+        <div>
+          <h1>مطعم وكافيه <span class="gold">تيتو</span></h1>
+          <p class="tagline">أشهى المأكولات والمشروبات — طعم يذكرك بالبيت</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="search-wrap">
+          <input id="searchInput" type="search" placeholder="ابحث عن طبق أو مكوّن..." aria-label="بحث" />
+          <button id="clearSearch" title="مسح"><i class="fa fa-times"></i></button>
+        </div>
+
+        <div class="toggles">
+          <select id="currencyToggle" aria-label="تبديل العملة">
+            <option value="IQD">IQD</option>
+            <option value="USD">USD</option>
+          </select>
+          <button id="darkModeToggle" aria-label="الوضع الداكن" title="تبديل الوضع"><i class="fa fa-moon"></i></button>
+          <button id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mainNav"><i class="fa fa-bars"></i></button>
+        </div>
+      </div>
+
+      <nav id="mainNav" class="nav">
+        <ul>
+          <li><a href="#hot-dishes"><i class="fa fa-pepper-hot"></i> المأكولات الحارة</a></li>
+          <li><a href="#pastries"><i class="fa fa-birthday-cake"></i> المعجنات والحلويات</a></li>
+          <li><a href="#salads"><i class="fa fa-seedling"></i> السلطات</a></li>
+          <li><a href="#cold-dishes"><i class="fa fa-snowflake"></i> المأكولات الباردة</a></li>
+          <li><a href="#hot-drinks"><i class="fa fa-mug-hot"></i> المشروبات الحارة</a></li>
+          <li><a href="#cold-drinks"><i class="fa fa-wine-glass-alt"></i> المشروبات الباردة</a></li>
+          <li><a href="#cocktails"><i class="fa fa-blender"></i> كوكتيل</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content" id="mainContent">
+
+    <p class="note">مرحبًا بكم في منيو تيتو — انقر على أي صنف لعرض التفاصيل. يمكنك البحث أو تصفية الأصناف.</p>
+
+    <!-- قائمة الأقسام (محتوى كامل كما طلبت) -->
+
+    <!-- المأكولات الحارة -->
+    <section class="category" id="hot-dishes">
+      <h2><i class="fa fa-pepper-hot"></i> المأكولات الحارة</h2>
+      <div class="menu-grid">
+        <!-- مثال عنصر -->
+        <article class="menu-item" data-title="فاهيتا لحم" data-price-iqd="4000" data-price-usd="3.05" data-description="طبق شهي من الفاهيتا باللحم يقدم مع صلصة خاصة." data-img="1000002748.jpg">
+          <img loading="lazy" src="1000002748.jpg" alt="فاهيتا لحم">
+          <div class="meta">
+            <h3 class="item-name">فاهيتا لحم</h3>
+            <div class="item-row"><span class="item-price">IQD 4000</span><button class="fav" title="أضف للمفضلة"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="فاهيتا دجاج" data-price-iqd="3500" data-price-usd="2.67" data-description="فاهيتا دجاج بنكهة مميزة." data-img="1000002749.jpg">
+          <img loading="lazy" src="1000002749.jpg" alt="فاهيتا دجاج">
+          <div class="meta">
+            <h3 class="item-name">فاهيتا دجاج</h3>
+            <div class="item-row"><span class="item-price">IQD 3500</span><button class="fav" title="أضف للمفضلة"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="فيلادلفيا لحم" data-price-iqd="4500" data-price-usd="3.44" data-description="فيلادلفيا باللحم مع جبنة كريمية." data-img="1000002750.jpg">
+          <img loading="lazy" src="1000002750.jpg" alt="فيلادلفيا لحم">
+          <div class="meta">
+            <h3 class="item-name">فيلادلفيا لحم</h3>
+            <div class="item-row"><span class="item-price">IQD 4500</span><button class="fav" title="أضف للمفضلة"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="فيلادلفيا دجاج" data-price-iqd="4000" data-price-usd="3.05" data-description="فيلادلفيا بالدجاج مع صلصة مبتكرة." data-img="1000002751.jpg">
+          <img loading="lazy" src="1000002751.jpg" alt="فيلادلفيا دجاج">
+          <div class="meta">
+            <h3 class="item-name">فيلادلفيا دجاج</h3>
+            <div class="item-row"><span class="item-price">IQD 4000</span><button class="fav" title="أضف للمفضلة"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="بيتزا خضار" data-price-iqd="5000" data-price-usd="3.82" data-description="بيتزا خضار طازجة مع مجموعة مختارة من الخضروات." data-img="1000002752.jpg">
+          <img loading="lazy" src="1000002752.jpg" alt="بيتزا خضار">
+          <div class="meta">
+            <h3 class="item-name">بيتزا خضار</h3>
+            <div class="item-row"><span class="item-price">IQD 5000</span><button class="fav" title="أضف للمفضلة"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="بيتزا بيبروني" data-price-iqd="6000" data-price-usd="4.59" data-description="بيتزا بيبروني غنية بالنكهات." data-img="1000002753.jpg">
+          <img loading="lazy" src="1000002753.jpg" alt="بيتزا بيبروني">
+          <div class="meta">
+            <h3 class="item-name">بيتزا بيبروني</h3>
+            <div class="item-row"><span class="item-price">IQD 6000</span><button class="fav" title="أضف للمفضلة"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="شوربة دجاج" data-price-iqd="2000" data-price-usd="1.53" data-description="شوربة دجاج مغذية وساخنة." data-img="https://via.placeholder.com/400x300?text=شوربة+دجاج">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=شوربة+دجاج" alt="شوربة دجاج">
+          <div class="meta">
+            <h3 class="item-name">شوربة دجاج</h3>
+            <div class="item-row"><span class="item-price">IQD 2000</span><button class="fav" title="أضف للمفضلة"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="صحن معكرونة" data-price-iqd="4000" data-price-usd="3.05" data-description="معكرونة بصلصة طماطم مع لمسة إيطالية." data-img="https://via.placeholder.com/400x300?text=معكرونة">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=معكرونة" alt="صحن معكرونة">
+          <div class="meta">
+            <h3 class="item-name">صحن معكرونة</h3>
+            <div class="item-row"><span class="item-price">IQD 4000</span><button class="fav" title="أضف للمفضلة"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- المعجنات والحلويات -->
+    <section class="category" id="pastries">
+      <h2><i class="fa fa-birthday-cake"></i> المعجنات والحلويات</h2>
+      <div class="menu-grid">
+        <article class="menu-item" data-title="كرواسون" data-price-iqd="1500" data-price-usd="1.15" data-description="كرواسون هش ولذيذ مع زبدة طبيعية." data-img="https://via.placeholder.com/400x300?text=كرواسون">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=كرواسون" alt="كرواسون">
+          <div class="meta">
+            <h3 class="item-name">كرواسون</h3>
+            <div class="item-row"><span class="item-price">IQD 1500</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="يورك (جين / أدم / دجاج)" data-price-iqd="3000" data-price-usd="2.29" data-description="معجنات محشوة بنكهات متعددة حسب الطلب." data-img="https://via.placeholder.com/400x300?text=يورك">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=يورك" alt="يورك">
+          <div class="meta">
+            <h3 class="item-name">يورك (جين / أدم / دجاج)</h3>
+            <div class="item-row"><span class="item-price">IQD 3000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="كريب نوتيلا" data-price-iqd="2000" data-price-usd="1.53" data-description="كريب مع نوتيلا طازجة ومزين بالفواكه." data-img="https://via.placeholder.com/400x300?text=كريب+نوتيلا">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=كريب+نوتيلا" alt="كريب نوتيلا">
+          <div class="meta">
+            <h3 class="item-name">كريب نوتيلا</h3>
+            <div class="item-row"><span class="item-price">IQD 2000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="وافل بالمكسرات" data-price-iqd="2500" data-price-usd="1.91" data-description="وافل مقرمش مع مكسرات مختارة." data-img="https://via.placeholder.com/400x300?text=وافل">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=وافل" alt="وافل بالمكسرات">
+          <div class="meta">
+            <h3 class="item-name">وافل بالمكسرات</h3>
+            <div class="item-row"><span class="item-price">IQD 2500</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="كيك" data-price-iqd="3000" data-price-usd="2.29" data-description="كيك طازج مع طبقات من الكريمة." data-img="https://via.placeholder.com/400x300?text=كيك">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=كيك" alt="كيك">
+          <div class="meta">
+            <h3 class="item-name">كيك</h3>
+            <div class="item-row"><span class="item-price">IQD 3000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="تراب الملوك" data-price-iqd="3500" data-price-usd="2.67" data-description="حلويات تقليدية بنكهات مميزة." data-img="https://via.placeholder.com/400x300?text=تراب+الملوك">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=تراب+الملوك" alt="تراب الملوك">
+          <div class="meta">
+            <h3 class="item-name">تراب الملوك</h3>
+            <div class="item-row"><span class="item-price">IQD 3500</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="ترايفل" data-price-iqd="3500" data-price-usd="2.67" data-description="حلوى ترايفل مع طبقات متعددة من النكهات." data-img="https://via.placeholder.com/400x300?text=ترايفل">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=ترايفل" alt="ترايفل">
+          <div class="meta">
+            <h3 class="item-name">ترايفل</h3>
+            <div class="item-row"><span class="item-price">IQD 3500</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="كريم باف" data-price-iqd="2000" data-price-usd="1.53" data-description="كريم باف هش مع طبقة من الكريمة." data-img="https://via.placeholder.com/400x300?text=كريم+باف">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=كريم+باف" alt="كريم باف">
+          <div class="meta">
+            <h3 class="item-name">كريم باف</h3>
+            <div class="item-row"><span class="item-price">IQD 2000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- السلطات -->
+    <section class="category" id="salads">
+      <h2><i class="fa fa-seedling"></i> السلطات</h2>
+      <div class="menu-grid">
+        <article class="menu-item" data-title="فتوش" data-price-iqd="2000" data-price-usd="1.53" data-description="سلطة فتوش طازجة مع صلصة الليمون." data-img="https://via.placeholder.com/400x300?text=فتوش">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=فتوش" alt="فتوش">
+          <div class="meta">
+            <h3 class="item-name">فتوش</h3>
+            <div class="item-row"><span class="item-price">IQD 2000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="سلطة فواكه" data-price-iqd="3000" data-price-usd="2.29" data-description="سلطة فواكه متنوعة مع صوص العسل." data-img="https://via.placeholder.com/400x300?text=سلطة+فواكه">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=سلطة+فواكه" alt="سلطة فواكه">
+          <div class="meta">
+            <h3 class="item-name">سلطة فواكه</h3>
+            <div class="item-row"><span class="item-price">IQD 3000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- المأكولات الباردة -->
+    <section class="category" id="cold-dishes">
+      <h2><i class="fa fa-snowflake"></i> المأكولات الباردة</h2>
+      <div class="menu-grid">
+        <article class="menu-item" data-title="لفات بيض" data-price-iqd="3000" data-price-usd="2.29" data-description="لفات بيض مع توابل مميزة." data-img="https://via.placeholder.com/400x300?text=لفات+بيض">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=لفات+بيض" alt="لفات بيض">
+          <div class="meta">
+            <h3 class="item-name">لفات بيض</h3>
+            <div class="item-row"><span class="item-price">IQD 3000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="كلوب ساندوش" data-price-iqd="4500" data-price-usd="3.44" data-description="كلوب ساندوش طازج مع مكونات مختارة." data-img="https://via.placeholder.com/400x300?text=كلوب+ساندوش">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=كلوب+ساندوش" alt="كلوب ساندوش">
+          <div class="meta">
+            <h3 class="item-name">كلوب ساندوش</h3>
+            <div class="item-row"><span class="item-price">IQD 4500</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="ميني برجر" data-price-iqd="4000" data-price-usd="3.05" data-description="ميني برجر صغير مع صوص خاص." data-img="https://via.placeholder.com/400x300?text=ميني+برجر">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=ميني+برجر" alt="ميني برجر">
+          <div class="meta">
+            <h3 class="item-name">ميني برجر</h3>
+            <div class="item-row"><span class="item-price">IQD 4000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- المشروبات الحارة -->
+    <section class="category" id="hot-drinks">
+      <h2><i class="fa fa-mug-hot"></i> المشروبات الحارة</h2>
+      <div class="menu-grid">
+        <article class="menu-item" data-title="شاي" data-price-iqd="1000" data-price-usd="0.76" data-description="شاي ساخن مع نكهة الليمون." data-img="https://via.placeholder.com/400x300?text=شاي">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=شاي" alt="شاي">
+          <div class="meta">
+            <h3 class="item-name">شاي</h3>
+            <div class="item-row"><span class="item-price">IQD 1000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="قهوة تركية عادي" data-price-iqd="2000" data-price-usd="1.53" data-description="قهوة تركية عطرية بنكهة تقليدية." data-img="https://via.placeholder.com/400x300?text=قهوة+تركية+عادي">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=قهوة+تركية+عادي" alt="قهوة تركية عادي">
+          <div class="meta">
+            <h3 class="item-name">قهوة تركية عادي</h3>
+            <div class="item-row"><span class="item-price">IQD 2000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="قهوة تركية دبل" data-price-iqd="2500" data-price-usd="1.91" data-description="قهوة تركية دبل لمحبي النكهة القوية." data-img="https://via.placeholder.com/400x300?text=قهوة+تركية+دبل">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=قهوة+تركية+دبل" alt="قهوة تركية دبل">
+          <div class="meta">
+            <h3 class="item-name">قهوة تركية دبل</h3>
+            <div class="item-row"><span class="item-price">IQD 2500</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="هوت شوكليت" data-price-iqd="3000" data-price-usd="2.29" data-description="مشروب هوت شوكليت دافئ مع لمسة من الكاكاو." data-img="https://via.placeholder.com/400x300?text=هوت+شوكليت">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=هوت+شوكليت" alt="هوت شوكليت">
+          <div class="meta">
+            <h3 class="item-name">هوت شوكليت</h3>
+            <div class="item-row"><span class="item-price">IQD 3000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="كوفي موكا" data-price-iqd="3000" data-price-usd="2.29" data-description="موكا لذيذة مع مزيج القهوة والشوكولاته." data-img="https://via.placeholder.com/400x300?text=كوفي+موكا">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=كوفي+موكا" alt="كوفي موكا">
+          <div class="meta">
+            <h3 class="item-name">كوفي موكا</h3>
+            <div class="item-row"><span class="item-price">IQD 3000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+        <article class="menu-item" data-title="كوفي اسبريسو" data-price-iqd="2000" data-price-usd="1.53" data-description="اسبريسو مركز لمحبي القهوة القوية." data-img="https://via.placeholder.com/400x300?text=اسبريسو">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=اسبريسو" alt="اسبريسو">
+          <div class="meta">
+            <h3 class="item-name">اسبريسو</h3>
+            <div class="item-row"><span class="item-price">IQD 2000</span><button class="fav"><i class="fa fa-heart"></i></button></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- المشروبات الباردة -->
+    <section class="category" id="cold-drinks">
+      <h2><i class="fa fa-wine-glass-alt"></i> المشروبات الباردة</h2>
+      <div class="menu-grid">
+        <article class="menu-item" data-title="مشروبات غازية بأنواعها" data-price-iqd="1000" data-price-usd="0.76" data-description="مشروبات غازية متنوعة بنكهة منعشة." data-img="https://via.placeholder.com/400x300?text=مشروبات+غازية">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=مشروبات+غازية" alt="مشروبات غازية">
+          <div class="meta"><h3 class="item-name">مشروبات غازية بأنواعها</h3><div class="item-row"><span class="item-price">IQD 1000</span><button class="fav"><i class="fa fa-heart"></i></button></div></div>
+        </article>
+
+        <article class="menu-item" data-title="عصائر فريش" data-price-iqd="2000" data-price-usd="1.53" data-description="عصائر فريش طبيعية." data-img="https://via.placeholder.com/400x300?text=عصائر+فريش">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=عصائر+فريش" alt="عصائر فريش">
+          <div class="meta"><h3 class="item-name">عصائر فريش (برتقال / ليمون / نعنع)</h3><div class="item-row"><span class="item-price">IQD 2000</span><button class="fav"><i class="fa fa-heart"></i></button></div></div>
+        </article>
+
+        <article class="menu-item" data-title="ميلك شيك فراولة" data-price-iqd="3750" data-price-usd="2.86" data-description="ميلك شيك فراولة لذيذ ومنعش." data-img="https://via.placeholder.com/400x300?text=ميلك+شيك+فراولة">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=ميلك+شيك+فراولة" alt="ميلك شيك فراولة">
+          <div class="meta"><h3 class="item-name">ميلك شيك فراولة</h3><div class="item-row"><span class="item-price">IQD 3750</span><button class="fav"><i class="fa fa-heart"></i></button></div></div>
+        </article>
+
+        <article class="menu-item" data-title="آيس لاتيه" data-price-iqd="3500" data-price-usd="2.67" data-description="آيس لاتيه بارد مع طعم القهوة المميز." data-img="https://via.placeholder.com/400x300?text=آيس+لاتيه">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=آيس+لاتيه" alt="آيس لاتيه">
+          <div class="meta"><h3 class="item-name">آيس لاتيه</h3><div class="item-row"><span class="item-price">IQD 3500</span><button class="fav"><i class="fa fa-heart"></i></button></div></div>
+        </article>
+
+        <article class="menu-item" data-title="آيس تي" data-price-iqd="2000" data-price-usd="1.53" data-description="آيس تي بنكهات متعددة." data-img="https://via.placeholder.com/400x300?text=آيس+تي">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=آيس+تي" alt="آيس تي">
+          <div class="meta"><h3 class="item-name">آيس تي (ليمون / خوخ)</h3><div class="item-row"><span class="item-price">IQD 2000</span><button class="fav"><i class="fa fa-heart"></i></button></div></div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- كوكتيل -->
+    <section class="category" id="cocktails">
+      <h2><i class="fa fa-blender"></i> كوكتيل</h2>
+      <div class="menu-grid">
+        <article class="menu-item" data-title="كوكتيل فواكه مشكل" data-price-iqd="3000" data-price-usd="2.29" data-description="كوكتيل فواكه طازجة مع مزيج من النكهات." data-img="https://via.placeholder.com/400x300?text=كوكتيل+فواكه">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=كوكتيل+فواكه" alt="كوكتيل فواكه مشكل">
+          <div class="meta"><h3 class="item-name">كوكتيل فواكه مشكل</h3><div class="item-row"><span class="item-price">IQD 3000</span><button class="fav"><i class="fa fa-heart"></i></button></div></div>
+        </article>
+
+        <article class="menu-item" data-title="موهيتو فراولة" data-price-iqd="5000" data-price-usd="3.82" data-description="موهيتو فراولة منعش مع نعناع." data-img="https://via.placeholder.com/400x300?text=موهيتو+فراولة">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=موهيتو+فراولة" alt="موهيتو فراولة">
+          <div class="meta"><h3 class="item-name">موهيتو فراولة</h3><div class="item-row"><span class="item-price">IQD 5000</span><button class="fav"><i class="fa fa-heart"></i></button></div></div>
+        </article>
+
+        <article class="menu-item" data-title="بلو + ريد بول" data-price-iqd="6000" data-price-usd="4.59" data-description="كوكتيل مميز مع مزيج بلو وريد بول." data-img="https://via.placeholder.com/400x300?text=بلو+ريد+بول">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=بلو+ريد+بول" alt="بلو + ريد بول">
+          <div class="meta"><h3 class="item-name">بلو + ريد بول</h3><div class="item-row"><span class="item-price">IQD 6000</span><button class="fav"><i class="fa fa-heart"></i></button></div></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- تواصل -->
+    <section class="category contact" id="contact">
+      <h2><i class="fa fa-address-book"></i> تواصل معنا</h2>
+      <p>للتواصل مع المنشأة: <strong>example@example.com</strong> - هاتف: <strong>+964 123 4567</strong></p>
+      <p class="footer-extra">تصميم وبرمجة: — جميع الحقوق محفوظة © 2025</p>
+    </section>
+
+  </main>
+
+  <!-- نافذة منبثقة لعرض تفاصيل المنتج -->
+  <div id="itemModal" class="modal" role="dialog" aria-hidden="true">
+    <div class="modal-inner">
+      <button class="modal-close" id="modalClose" aria-label="إغلاق"><i class="fa fa-times"></i></button>
+      <img id="modalImg" src="" alt="صورة المنتج">
+      <div class="modal-body">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+        <p class="modal-price"><strong id="modalPrice"></strong></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>مطعم وكافيه تيتو</h4>
+        <p>العنوان: شارع المثال، المدينة</p>
+        <p>هاتف: +964 123 4567</p>
+      </div>
+      <div>
+        <h4>تابعنا</h4>
+        <p class="socials"><a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a> <a href="#"><i class="fa fa-whatsapp"></i></a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- سكربت صغير للتفاعل (بحث، مودال، محو البحث، تبديل عملة، الوضع الداكن) -->
+  <script>
+    (function(){
+      const searchInput = document.getElementById('searchInput');
+      const clearSearch = document.getElementById('clearSearch');
+      const menuBtn = document.getElementById('menuBtn');
+      const mainNav = document.getElementById('mainNav');
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const currencyToggle = document.getElementById('currencyToggle');
+      const modal = document.getElementById('itemModal');
+      const modalImg = document.getElementById('modalImg');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDesc = document.getElementById('modalDesc');
+      const modalPrice = document.getElementById('modalPrice');
+      const modalClose = document.getElementById('modalClose');
+
+      // قائمة العناصر
+      const items = Array.from(document.querySelectorAll('.menu-item'));
+
+      // بحث مباشر
+      function filterItems(q){
+        const term = q.trim().toLowerCase();
+        items.forEach(it => {
+          const title = it.getAttribute('data-title') || '';
+          const desc = it.getAttribute('data-description') || '';
+          const visible = title.toLowerCase().includes(term) || desc.toLowerCase().includes(term);
+          it.style.display = visible ? '' : 'none';
+        });
+      }
+      searchInput.addEventListener('input', (e)=> filterItems(e.target.value));
+      clearSearch.addEventListener('click', ()=>{ searchInput.value=''; filterItems(''); searchInput.focus(); });
+
+      // تفعيل/إخفاء القوائم على الشاشات الصغيرة
+      menuBtn.addEventListener('click', ()=>{
+        const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', String(!expanded));
+        mainNav.classList.toggle('open');
+      });
+
+      // تبديل الوضع الداكن
+      darkModeToggle.addEventListener('click', ()=>{
+        document.documentElement.classList.toggle('dark');
+        // حفظ التفضيل
+        localStorage.setItem('tito-dark', document.documentElement.classList.contains('dark'));
+      });
+      // استعادة الوضع
+      if(localStorage.getItem('tito-dark') === 'true') document.documentElement.classList.add('dark');
+
+      // تبديل العملة (تحويل تقريبي ثابت)
+      function updatePrices(currency){
+        items.forEach(it => {
+          const iqd = Number(it.getAttribute('data-price-iqd') || 0);
+          const usd = Number(it.getAttribute('data-price-usd') || 0);
+          const priceNode = it.querySelector('.item-price');
+          if(currency === 'USD'){
+            priceNode.textContent = usd ? `USD ${usd.toFixed(2)}` : '—';
+          } else {
+            priceNode.textContent = iqd ? `IQD ${iqd}` : '—';
+          }
+        });
+      }
+      currencyToggle.addEventListener('change', (e)=> updatePrices(e.target.value));
+
+      // فتح النافذة المنبثقة عند النقر
+      items.forEach(it => {
+        it.addEventListener('click', ()=>{
+          const img = it.getAttribute('data-img') || it.querySelector('img').src;
+          const title = it.getAttribute('data-title') || it.querySelector('.item-name').textContent;
+          const desc = it.getAttribute('data-description') || '';
+          const iqd = it.getAttribute('data-price-iqd') || '';
+          const usd = it.getAttribute('data-price-usd') || '';
+          modalImg.src = img;
+          modalTitle.textContent = title;
+          modalDesc.textContent = desc;
+          const cur = currencyToggle.value || 'IQD';
+          modalPrice.textContent = cur === 'USD' ? `USD ${Number(usd).toFixed(2)}` : `IQD ${iqd}`;
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden','false');
+        });
+      });
+
+      function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+      modalClose.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+
+      // تفضيلات القلب (مفضلة)
+      document.querySelectorAll('.fav').forEach(btn => {
+        btn.addEventListener('click', (e)=>{
+          e.stopPropagation();
+          btn.classList.toggle('active');
+        });
+      });
+
+      // تهيئة الأسعار وفق العملة الافتراضية
+      updatePrices(currencyToggle.value || 'IQD');
+
+      // سلاسة تمرير الروابط
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', (e)=>{
+          const target = document.querySelector(a.getAttribute('href'));
+          if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
+

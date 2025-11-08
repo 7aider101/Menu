@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منيو مطعم وكافيه تيتو (تصميم التبويبات)</title>
+  
+  <!-- استدعاء خط Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- استدعاء مكتبة Font Awesome للأيقونات -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  
+  <style>
+    /* تنقل سلس عند الضغط على الروابط */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    :root {
+      /* لوحة ألوان "عصرية ونظيفة" (نفس الألوان السابقة) */
+      --primary-color: #34A853;  /* أخضر عصري */
+      --secondary-color: #fbbc05; /* أصفر (للمسات) */
+      --background-color: #f8f9fa; /* رمادي فاتح جدًا */
+      --card-bg: #ffffff;
+      --text-color: #212529;
+      --text-light: #555;
+      --border-color: #e5e7eb;
+    }
+
+    /* إعدادات عامة */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.7;
+      direction: rtl;
+    }
+
+    /* حاوية المحتوى الرئيسية */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    /* -- 1. ترويسة الصفحة -- */
+    .page-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid var(--primary-color);
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+    
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+    
+    .page-header p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-top: 5px;
+    }
+
+    /* -- 2. شريط التنقل بالتبويبات (الجديد) -- */
+    .tab-navigation-container {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+    }
+    
+    .tab-navigation {
+      display: flex;
+      flex-wrap: nowrap; /* لضمان عدم الالتفاف */
+      overflow-x: auto; /* السماح بالتمرير الأفقي على الهاتف */
+      padding-bottom: 10px; /* لإعطاء مساحة لشريط التمرير */
+      -webkit-overflow-scrolling: touch; /* تمرير سلس على iOS */
+    }
+    
+    /* إخفاء شريط التمرير (اختياري) */
+    .tab-navigation::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .tab-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 8px;
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap; /* لمنع كسر النص */
+    }
+    
+    .tab-link:hover {
+      background-color: #f0f8f2; /* أخضر فاتح جدًا */
+      color: var(--primary-color);
+    }
+    
+    .tab-link.active {
+      background: var(--primary-color);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(52, 168, 83, 0.3);
+    }
+    
+    .tab-link i {
+      font-size: 1rem;
+    }
+
+    /* -- 3. أقسام وبطاقات المنيو -- */
+    .category {
+      margin-bottom: 60px;
+      /* سيتم التحكم بالعرض (display) عبر جافاسكريبت */
+      /* animation: fadeInUp 0.7s ease-out; */ /* يمكن أن يسبب تداخل مع التبويبات */
+    }
+    
+    /* إخفاء الأقسام غير النشطة */
+    .category.hidden {
+      display: none;
+    }
+    
+    .category h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: var(--text-color);
+      border-bottom: 3px solid var(--primary-color);
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    
+    .category h2 i {
+      margin-left: 10px;
+      color: var(--primary-color);
+    }
+    
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    
+    /* بطاقة عنصر المنيو - تصميم "نظيف" */
+    .menu-item {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border-color);
+    }
+    
+    .menu-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .item-image-container {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+    
+    .menu-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    
+    .menu-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .item-content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .item-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+    
+    .item-price {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    /* -- 4. النافذة المنبثقة (Modal) -- */
+    @keyframes fadeInUpModal {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes fadeInOverlay {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 20px;
+      animation: fadeInOverlay 0.3s ease;
+    }
+    
+    .modal.active {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: #fff;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 12px;
+      padding: 0;
+      position: relative;
+      animation: fadeInUpModal 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      text-align: right;
+      overflow: hidden;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      left: auto;
+      font-size: 1.5rem;
+      color: var(--text-color);
+      cursor: pointer;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.7);
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    
+    .modal-content img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .modal-text {
+      padding: 25px;
+    }
+    
+    .modal-text h2 {
+      font-size: 1.8rem;
+      color: var(--text-color);
+      margin-bottom: 15px;
+    }
+    
+    .modal-text p {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+    
+    .modal-text strong {
+      font-size: 1.3rem;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    /* -- 5. زر العودة للأعلى -- */
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 500;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      text-align: center;
+      line-height: 45px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(52, 168, 83, 0.4);
+      transition: background 0.3s, transform 0.3s;
+    }
+    
+    #backToTop:hover {
+      background: #2e8a47;
+      transform: translateY(-3px);
+    }
+    
+    /* -- 6. الفوتر -- */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 30px 20px;
+      border-top: 1px solid var(--border-color);
+      background: var(--card-bg);
+    }
+    
+    footer .footer-social {
+      margin-bottom: 15px;
+    }
+    
+    footer .footer-social a {
+      color: var(--text-light);
+      font-size: 1.4rem;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    
+    footer .footer-social a:hover {
+      color: var(--primary-color);
+    }
+    
+    footer p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- حاوية المحتوى الرئيسية -->
+  <div class="container">
+    
+    <!-- -- 1. ترويسة الصفحة -- -->
+    <header class="page-header">
+      <img src="https://placehold.co/100x100/34A853/ffffff?text=TITO" alt="Logo" class="logo" />
+      <h1>منيو مطعم وكافيه تيتو</h1>
+      <p>أشهى المأكولات والمشروبات على الإطلاق</p>
+    </header>
+    
+    <!-- -- 2. شريط التنقل بالتبويبات -- -->
+    <div class="tab-navigation-container">
+      <div class="tab-navigation" id="tabNav">
+        <!-- التبويب "الكل" يكون نشطًا افتراضيًا -->
+        <button class="tab-link active" data-target="all"><i class="fas fa-grip"></i> الكل</button>
+        <button class="tab-link" data-target="#hot-dishes"><i class="fas fa-pepper-hot"></i> المأكولات الحارة</button>
+        <button class="tab-link" data-target="#pastries"><i class="fas fa-birthday-cake"></i> المعجنات والحلويات</button>
+        <button class="tab-link" data-target="#salads"><i class="fas fa-seedling"></i> السلطات</button>
+        <button class="tab-link" data-target="#cold-dishes"><i class="fas fa-snowflake"></i> المأكولات الباردة</button>
+        <button class="tab-link" data-target="#hot-drinks"><i class="fas fa-mug-hot"></i> المشروبات الحارة</button>
+        <button class="tab-link" data-target="#cold-drinks"><i class="fas fa-wine-glass-alt"></i> المشروبات الباردة</button>
+        <button class="tab-link" data-target="#cocktails"><i class="fas fa-blender"></i> كوكتيل</button>
+      </div>
+    </div>
+
+    <!-- -- 3. حاوية أقسام المنيو -- -->
+    <main id="menu-categories">
+      <!-- قسم المأكولات الحارة -->
+      <div class="category" id="hot-dishes">
+        <h2><i class="fas fa-pepper-hot"></i> المأكولات الحارة</h2>
+        <div class="menu-grid">
+          <div class="menu-item" data-title="فاهيتا لحم" data-price="IQD 4000" data-description="طبق شهي من الفاهيتا باللحم يقدم مع صلصة خاصة." data-img="https://placehold.co/600x400/FAD2B4/333?text=فاهيتا+لحم">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FAD2B4/333?text=فاهيتا+لحم" alt="فاهيتا لحم" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">فاهيتا لحم</div><div class="item-price">IQD 4000</div></div>
+          </div>
+          <div class="menu-item" data-title="فاهيتا دجاج" data-price="IQD 3500" data-description="فاهيتا دجاج بنكهة مميزة." data-img="https://placehold.co/600x400/FAD2B4/333?text=فاهيتا+دجاج">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FAD2B4/333?text=فاهيتا+دجاج" alt="فاهيتا دجاج" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">فاهيتا دجاج</div><div class="item-price">IQD 3500</div></div>
+          </div>
+          <div class="menu-item" data-title="فيلادلفيا لحم" data-price="IQD 4500" data-description="فيلادلفيا باللحم مع جبنة كريمية." data-img="https://placehold.co/600x400/FAD2B4/333?text=فيلادلفيا+لحم">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FAD2B4/333?text=فيلادلفيا+لحم" alt="فيلادلفيا لحم" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">فيلادلفيا لحم</div><div class="item-price">IQD 4500</div></div>
+          </div>
+          <div class="menu-item" data-title="فيلادلفيا دجاج" data-price="IQD 4000" data-description="فيلادلفيا بالدجاج مع صلصة مبتكرة." data-img="https://placehold.co/600x400/FAD2B4/333?text=فيلادلفيا+دجاج">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FAD2B4/333?text=فيلادلفيا+دجاج" alt="فيلادلفيا دجاج" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">فيلادلفيا دجاج</div><div class="item-price">IQD 4000</div></div>
+          </div>
+          <div class="menu-item" data-title="بيتزا خضار" data-price="IQD 5000" data-description="بيتزا خضار طازجة مع مجموعة مختارة من الخضروات." data-img="https://placehold.co/600x400/FFE0B2/333?text=بيتزا+خضار">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFE0B2/333?text=بيتزا+خضار" alt="بيتزا خضار" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">بيتزا خضار</div><div class="item-price">IQD 5000</div></div>
+          </div>
+          <div class="menu-item" data-title="بيتزا بيبروني" data-price="IQD 6000" data-description="بيتزا بيبروني غنية بالنكهات." data-img="https://placehold.co/600x400/FFE0B2/333?text=بيتزا+بيبروني">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFE0B2/333?text=بيتزا+بيبروني" alt="بيتزا بيبروني" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">بيتزا بيبروني</div><div class="item-price">IQD 6000</div></div>
+          </div>
+          <div class="menu-item" data-title="شوربة دجاج" data-price="IQD 2000" data-description="شوربة دجاج مغذية وساخنة." data-img="https://placehold.co/600x400/FFF9C4/333?text=شوربة+دجاج">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFF9C4/333?text=شوربة+دجاج" alt="شوربة دجاج" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">شوربة دجاج</div><div class="item-price">IQD 2000</div></div>
+          </div>
+          <div class="menu-item" data-title="صحن معكرونة" data-price="IQD 4000" data-description="معكرونة بصلصة طماطم مع لمسة إيطالية." data-img="https://placehold.co/600x400/FFCCBC/333?text=صحن+معكرونة">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFCCBC/333?text=صحن+معكرونة" alt="صحن معكرونة" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">صحن معكرونة</div><div class="item-price">IQD 4000</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- قسم المعجنات والحلويات -->
+      <div class="category" id="pastries">
+        <h2><i class="fas fa-birthday-cake"></i> المعجنات والحلويات</h2>
+        <div class="menu-grid">
+          <div class="menu-item" data-title="كرواسون" data-price="IQD 1500" data-description="كرواسون هش ولذيذ مع زبدة طبيعية." data-img="https://placehold.co/600x400/E8D5C4/333?text=كرواسون">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/E8D5C4/333?text=كرواسون" alt="كرواسون" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">كرواسون</div><div class="item-price">IQD 1500</div></div>
+          </div>
+          <div class="menu-item" data-title="يورك (جين / أدم / دجاج)" data-price="IQD 3000" data-description="معجنات محشوة بنكهات متعددة حسب الطلب." data-img="https://placehold.co/600x400/E8D5C4/333?text=يورك">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/E8D5C4/333?text=يورك" alt="يورك" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">يورك (جين / أدم / دجاج)</div><div class="item-price">IQD 3000</div></div>
+          </div>
+          <div class="menu-item" data-title="كريب نوتيلا" data-price="IQD 2000" data-description="كريب مع نوتيلا طازجة ومزين بالفواكه." data-img="https://placehold.co/600x400/D7CCC8/333?text=كريب+نوتيلا">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/D7CCC8/333?text=كريب+نوتيلا" alt="كريب نوتيلا" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">كريب نوتيلا</div><div class="item-price">IQD 2000</div></div>
+          </div>
+          <div class="menu-item" data-title="وافل بالمكسرات" data-price="IQD 2500" data-description="وافل مقرمش مع مكسرات مختارة." data-img="https://placehold.co/600x400/D7CCC8/333?text=وافل">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/D7CCC8/333?text=وافل" alt="وافل بالمكسرات" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">وافل بالمكسرات</div><div class="item-price">IQD 2500</div></div>
+          </div>
+          <div class="menu-item" data-title="كيك" data-price="IQD 3000" data-description="كيك طازج مع طبقات من الكريمة." data-img="https://placehold.co/600x400/FFCDD2/333?text=كيك">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFCDD2/333?text=كيك" alt="كيك" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">كيك</div><div class="item-price">IQD 3000</div></div>
+          </div>
+          <div class="menu-item" data-title="تراب الملوك" data-price="IQD 3500" data-description="حلويات تقليدية بنكهات مميزة." data-img="https://placehold.co/600x400/FFCDD2/333?text=تراب+الملوك">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFCDD2/333?text=تراب+الملوك" alt="تراب الملوك" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">تراب الملوك</div><div class="item-price">IQD 3500</div></div>
+          </div>
+          <div class="menu-item" data-title="ترايفل" data-price="IQD 3500" data-description="حلوى ترايفل مع طبقات متعددة من النكهات." data-img="https://placehold.co/600x400/FFCDD2/333?text=ترايفل">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFCDD2/333?text=ترايفل" alt="ترايفل" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">ترايفل</div><div class="item-price">IQD 3500</div></div>
+          </div>
+          <div class="menu-item" data-title="كريم باف" data-price="IQD 2000" data-description="كريم باف هش مع طبقة من الكريمة." data-img="https://placehold.co/600x400/E8D5C4/333?text=كريم+باف">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/E8D5C4/333?text=كريم+باف" alt="كريم باف" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">كريم باف</div><div class="item-price">IQD 2000</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- قسم السلطات -->
+      <div class="category" id="salads">
+        <h2><i class="fas fa-seedling"></i> السلطات</h2>
+        <div class="menu-grid">
+          <div class="menu-item" data-title="فتوش" data-price="IQD 2000" data-description="سلطة فتوش طازجة مع صلصة الليمون." data-img="https://placehold.co/600x400/C8E6C9/333?text=فتوش">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/C8E6C9/333?text=فتوش" alt="فتوش" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">فتوش</div><div class="item-price">IQD 2000</div></div>
+          </div>
+          <div class="menu-item" data-title="سلطة فواكه" data-price="IQD 3000" data-description="سلطة فواكه متنوعة مع صوص العسل." data-img="https://placehold.co/600x400/F8BBD0/333?text=سلطة+فواكه">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/F8BBD0/333?text=سلطة+فواكه" alt="سلطة فواكه" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">سلطة فواكه</div><div class="item-price">IQD 3000</div></div>
+          </div>
+        </div>
+      </div>
+<!-- قسم المأكولات الباردة -->
+      <div class="category" id="cold-dishes">
+        <h2><i class="fas fa-snowflake"></i> المأكولات الباردة</h2>
+        <div class="menu-grid">
+          <div class="menu-item" data-title="لفات بيض" data-price="IQD 3000" data-description="لفات بيض مع توابل مميزة." data-img="https://placehold.co/600x400/E1F5FE/333?text=لفات+بيض">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/E1F5FE/333?text=لفات+بيض" alt="لفات بيض" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">لفات بيض</div><div class="item-price">IQD 3000</div></div>
+          </div>
+          <div class="menu-item" data-title="كلوب ساندوش" data-price="IQD 4500" data-description="كلوب ساندوش طازج مع مكونات مختارة." data-img="https://placehold.co/600x400/E1F5FE/333?text=كلوب+ساندوش">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/E1F5FE/333?text=كلوب+ساندوش" alt="كلوب ساندوش" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">كلوب ساندوش</div><div class="item-price">IQD 4500</div></div>
+          </div>
+          <div class="menu-item" data-title="ميني برجر" data-price="IQD 4000" data-description="ميني برجر صغير مع صوص خاص." data-img="https://placehold.co/600x400/E1F5FE/333?text=ميني+برجر">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/E1F5FE/333?text=ميني+برجر" alt="ميني برجر" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">ميني برجر</div><div class="item-price">IQD 4000</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- قسم المشروبات الحارة -->
+      <div class="category" id="hot-drinks">
+        <h2><i class="fas fa-mug-hot"></i> المشروبات الحارة</h2>
+        <div class="menu-grid">
+          <div class="menu-item" data-title="شاي" data-price="IQD 1000" data-description="شاي ساخن مع نكهة الليمون." data-img="https://placehold.co/600x400/D7CCC8/333?text=شاي">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/D7CCC8/333?text=شاي" alt="شاي" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">شاي</div><div class="item-price">IQD 1000</div></div>
+          </div>
+          <div class="menu-item" data-title="قهوة تركية عادي" data-price="IQD 2000" data-description="قهوة تركية عطرية بنكهة تقليدية." data-img="https://placehold.co/600x400/A1887F/fff?text=قهوة+تركية">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/A1887F/fff?text=قهوة+تركية" alt="قهوة تركية عادي" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">قهوة تركية عادي</div><div class="item-price">IQD 2000</div></div>
+          </div>
+          <div class="menu-item" data-title="قهوة تركية دبل" data-price="IQD 2500" data-description="قهوة تركية دبل لمحبي النكهة القوية." data-img="https://placehold.co/600x400/A1887F/fff?text=قهوة+دبل">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/A1887F/fff?text=قهوة+دبل" alt="قهوة تركية دبل" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">قهوة تركية دبل</div><div class="item-price">IQD 2500</div></div>
+          </div>
+          <div class="menu-item" data-title="قهوة فرنسية" data-price="IQD 2500" data-description="قهوة فرنسية فاخرة مع رغوة غنية." data-img="https://placehold.co/600x400/D7CCC8/333?text=قهوة+فرنسية">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/D7CCC8/333?text=قهوة+فرنسية" alt="قهوة فرنسية" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">قهوة فرنسية</div><div class="item-price">IQD 2500</div></div>
+          </div>
+          <div class="menu-item" data-title="اسبريسو" data-price="IQD 2000" data-description="اسبريسو مركز لمحبي القهوة القوية." data-img="https://placehold.co/600x400/8D6E63/fff?text=اسبريسو">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/8D6E63/fff?text=اسبريسو" alt="اسبريسو" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">اسبريسو</div><div class="item-price">IQD 2000</div></div>
+          </div>
+          <div class="menu-item" data-title="اسبريسو دبل" data-price="IQD 2500" data-description="اسبريسو دبل لمن يبحث عن جرعة مضاعفة من الكافيين." data-img="https://placehold.co/600x400/8D6E63/fff?text=اسبريسو+دبل">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/8D6E63/fff?text=اسبريسو+دبل" alt="اسبريسو دبل" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">اسبريسو دبل</div><div class="item-price">IQD 2500</div></div>
+          </div>
+          <div class="menu-item" data-title="أمريكانو" data-price="IQD 2000" data-description="أمريكانو خفيف مع لمسة نكهة." data-img="https://placehold.co/600x400/8D6E63/fff?text=أمريكانو">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/8D6E63/fff?text=أمريكانو" alt="أمريكانو" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">أمريكانو</div><div class="item-price">IQD 2000</div></div>
+          </div>
+           <div class="menu-item" data-title="شاي كرك" data-price="IQD 2000" data-description="شاي كرك بلمسة التوابل الهندية." data-img="https://placehold.co/600x400/BCAAA4/333?text=شاي+كرك">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/BCAAA4/333?text=شاي+كرك" alt="شاي كرك" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">شاي كرك</div><div class="item-price">IQD 2000</div></div>
+          </div>
+          <div class="menu-item" data-title="هوت شوكليت" data-price="IQD 3000" data-description="مشروب هوت شوكليت دافئ مع لمسة من الكاكاو." data-img="https://placehold.co/600x400/A1887F/fff?text=هوت+شوكليت">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/A1887F/fff?text=هوت+شوكليت" alt="هوت شوكليت" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">هوت شوكليت</div><div class="item-price">IQD 3000</div></div>
+          </div>
+          <div class="menu-item" data-title="كوفي موكا" data-price="IQD 3000" data-description="موكا لذيذة مع مزيج القهوة والشوكولاته." data-img="https://placehold.co/600x400/A1887F/fff?text=كوفي+موكا">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/A1887F/fff?text=كوفي+موكا" alt="كوفي موكا" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">كوفي موكا</div><div class="item-price">IQD 3000</div></div>
+          </div>
+          <div class="menu-item" data-title="زهورات" data-price="IQD 2000" data-description="مشروب زهورات منعش مع نكهة الزهور." data-img="https://placehold.co/600x400/FFF9C4/333?text=زهورات">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFF9C4/333?text=زهورات" alt="زهورات" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">زهورات</div><div class="item-price">IQD 2000</div></div>
+          </div>
+        </div>
+      </div>
+<!-- قسم المشروبات الباردة -->
+      <div class="category" id="cold-drinks">
+        <h2><i class="fas fa-wine-glass-alt"></i> المشروبات الباردة</h2>
+        <div class="menu-grid">
+          <div class="menu-item" data-title="مشروبات غازية بأنواعها" data-price="IQD 1000" data-description="مشروبات غازية متنوعة بنكهة منعشة." data-img="https://placehold.co/600x400/B3E5FC/333?text=مشروبات+غازية">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/B3E5FC/333?text=مشروبات+غازية" alt="مشروبات غازية بأنواعها" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">مشروبات غازية بأنواعها</div><div class="item-price">IQD 1000</div></div>
+          </div>
+          <div class="menu-item" data-title="عصائر جاهزة بأنواعها" data-price="IQD 1500" data-description="عصائر جاهزة بنكهات متعددة." data-img="https://placehold.co/600x400/FFF176/333?text=عصائر+جاهزة">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFF176/333?text=عصائر+جاهزة" alt="عصائر جاهزة بأنواعها" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">عصائر جاهزة بأنواعها</div><div class="item-price">IQD 1500</div></div>
+          </div>
+          <div class="menu-item" data-title="عصائر فريش (برتقال / ليمون ونعنع)" data-price="IQD 2000" data-description="عصائر فريش طبيعية من الفاكهة الطازجة." data-img="https://placehold.co/600x400/FFB74D/333?text=عصائر+فريش">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFB74D/333?text=عصائر+فريش" alt="عصائر فريش (برتقال / ليمون ونعنع)" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">عصائر فريش (برتقال / ليمون ونعنع)</div><div class="item-price">IQD 2000</div></div>
+          </div>
+          <div class="menu-item" data-title="عصير رمان" data-price="IQD 2500" data-description="عصير رمان طبيعي ومنعش." data-img="https://placehold.co/600x400/E57373/333?text=عصير+رمان">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/E57373/333?text=عصير+رمان" alt="عصير رمان" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">عصير رمان</div><div class="item-price">IQD 2500</div></div>
+          </div>
+          <div class="menu-item" data-title="عصير أفوكادو مع قشطة وعسل" data-price="IQD 4000" data-description="عصير أفوكادو مميز مع قشطة وعسل طبيعي." data-img="https://placehold.co/600x400/A5D6A7/333?text=عصير+أفوكادو">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/A5D6A7/333?text=عصير+أفوكادو" alt="عصير أفوكادو مع قشطة وعسل" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">عصير أفوكادو مع قشطة وعسل</div><div class="item-price">IQD 4000</div></div>
+          </div>
+          <div class="menu-item" data-title="ميلك شيك فراولة" data-price="IQD 3750" data-description="ميلك شيك فراولة لذيذ ومنعش." data-img="https://placehold.co/600x400/F48FB1/333?text=ميلك+شيك+فراولة">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/F48FB1/333?text=ميلك+شيك+فراولة" alt="ميلك شيك فراولة" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">ميلك شيك فراولة</div><div class="item-price">IQD 3750</div></div>
+          </div>
+          <div class="menu-item" data-title="موكا بارد" data-price="IQD 3000" data-description="موكا بارد مع ثلج ونكهة الشوكولاتة." data-img="https://placehold.co/600x400/D7CCC8/333?text=موكا+بارد">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/D7CCC8/333?text=موكا+بارد" alt="موكا بارد" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">موكا بارد</div><div class="item-price">IQD 3000</div></div>
+          </div>
+          <div class="menu-item" data-title="فانيلا شيك" data-price="IQD 3000" data-description="فانيلا شيك بنكهة الفانيليا الكلاسيكية." data-img="https://placehold.co/600x400/FFFDE7/333?text=فانيلا+شيك">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFFDE7/333?text=فانيلا+شيك" alt="فانيلا شيك" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">فانيلا شيك</div><div class="item-price">IQD 3000</div></div>
+          </div>
+          <div class="menu-item" data-title="آيس لاتيه" data-price="IQD 3500" data-description="آيس لاتيه بارد مع طعم القهوة المميز." data-img="https://placehold.co/600x400/D7CCC8/333?text=آيس+لاتيه">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/D7CCC8/333?text=آيس+لاتيه" alt="آيس لاتيه" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">آيس لاتيه</div><div class="item-price">IQD 3500</div></div>
+          </div>
+          <div class="menu-item" data-title="آيس تي (ليمون / خوخ)" data-price="IQD 2000" data-description="آيس تي منعش بنكهات الليمون أو الخوخ." data-img="https://placehold.co/600x400/FFE0B2/333?text=آيس+تي">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFE0B2/333?text=آيس+تي" alt="آيس تي (ليمون / خوخ)" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">آيس تي (ليمون / خوخ)</div><div class="item-price">IQD 2000</div></div>
+          </div>
+          <div class="menu-item" data-title="سلاش فراولة" data-price="IQD 2000" data-description="سلاش فراولة منعش مع قوام ناعم." data-img="https://placehold.co/600x400/FF8A80/333?text=سلاش+فراولة">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FF8A80/333?text=سلاش+فراولة" alt="سلاش فراولة" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">سلاش فراولة</div><div class="item-price">IQD 2000</div></div>
+          </div>
+          <div class="menu-item" data-title="سلاش موز وحليب" data-price="IQD 2000" data-description="سلاش موز مع حليب بنكهة طبيعية." data-img="https://placehold.co/600x400/FFF9C4/333?text=سلاش+موز+وحليب">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFF9C4/333?text=سلاش+موز+وحليب" alt="سلاش موز وحليب" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">سلاش موز وحليب</div><div class="item-price">IQD 2000</div></div>
+          </div>
+          <div class="menu-item" data-title="سلاش موز ورمان" data-price="IQD 2500" data-description="سلاش موز ممزوج برمان لمن يبحث عن نكهة مميزة." data-img="https://placehold.co/600x400/F48FB1/333?text=سلاش+موز+ورمان">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/F48FB1/333?text=سلاش+موز+ورمان" alt="سلاش موز ورمان" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">سلاش موز ورمان</div><div class="item-price">IQD 2500</div></div>
+          </div>
+          <div class="menu-item" data-title="عصير بينا كولادا" data-price="IQD 3000" data-description="عصير بينا كولادا استوائي مع نكهة جوز الهند." data-img="https://placehold.co/600x400/FFFDE7/333?text=بينا+كولادا">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFFDE7/333?text=بينا+كولادا" alt="عصير بينا كولادا" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">عصير بينا كولادا</div><div class="item-price">IQD 3000</div></div>
+          </div>
+          <div class="menu-item" data-title="عصير تروبيكان" data-price="IQD 3000" data-description="عصير تروبيكان بنكهة استوائية منعشة." data-img="https://placehold.co/600x400/FFCC80/333?text=تروبيكان">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFCC80/333?text=تروبيكان" alt="عصير تروبيكان" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">عصير تروبيكان</div><div class="item-price">IQD 3000</div></div>
+          </div>
+        </div>
+      </div>
+      <!-- قسم الكوكتيل -->
+      <div class="category" id="cocktails">
+        <h2><i class="fas fa-blender"></i> كوكتيل</h2>
+        <div class="menu-grid">
+          <div class="menu-item" data-title="كوكتيل فواكه مشكل" data-price="IQD 3000" data-description="كوكتيل فواكه طازجة مع مزيج من النكهات." data-img="https://placehold.co/600x400/F8BBD0/333?text=كوكتيل+فواكه">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/F8BBD0/333?text=كوكتيل+فواكه" alt="كوكتيل فواكه مشكل" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">كوكتيل فواكه مشكل</div><div class="item-price">IQD 3000</div></div>
+          </div>
+          <div class="menu-item" data-title="موهيتو فراولة" data-price="IQD 5000" data-description="موهيتو فراولة منعش مع نعناع." data-img="https://placehold.co/600x400/FF8A80/333?text=موهيتو+فراولة">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FF8A80/333?text=موهيتو+فراولة" alt="موهيتو فراولة" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">موهيتو فراولة</div><div class="item-price">IQD 5000</div></div>
+          </div>
+          <div class="menu-item" data-title="موهيتو ليمون ونعنع" data-price="IQD 5000" data-description="موهيتو ليمون مع نعناع طازج." data-img="https://placehold.co/600x400/CCFF90/333?text=موهيتو+ليمون">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/CCFF90/333?text=موهيتو+ليمون" alt="موهيتو ليمون ونعنع" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">موهيتو ليمون ونعنع</div><div class="item-price">IQD 5000</div></div>
+          </div>
+          <div class="menu-item" data-title="باشن فروت" data-price="IQD 5000" data-description="عصير باشن فروت مع نكهة فريدة." data-img="https://placehold.co/600x400/FFD180/333?text=باشن+فروت">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/FFD180/333?text=باشن+فروت" alt="باشن فروت" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">باشن فروت</div><div class="item-price">IQD 5000</div></div>
+          </div>
+          <div class="menu-item" data-title="بلو + ريد بول" data-price="IQD 6000" data-description="كوكتيل مميز مع مزيج بلو وريد بول." data-img="https://placehold.co/600x400/80D8FF/333?text=بلو+%2B+ريد+بول">
+            <div class="item-image-container"><img src="https://placehold.co/600x400/80D8FF/333?text=بلو+%2B+ريد+بول" alt="بلو + ريد بول" loading="lazy"></div>
+            <div class="item-content"><div class="item-name">بلو + ريد بول</div><div class="item-price">IQD 6000</div></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <!-- -- 4. الفوتر -- -->
+    <footer>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+      <p>© 2025 مطعم وكافيه تيتو. جميع الحقوق محفوظة.</p>
+      <p style="font-size: 0.9rem; margin-top: 5px;">للتواصل: <strong>info@tito-cafe.com</strong></p>
+    </footer>
+
+  </div> <!-- /end .container -->
+  
+  <!-- -- 5. النافذة المنبثقة (Modal) -- -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose"><i class="fas fa-times"></i></span>
+      <img src="" alt="صورة المنتج" id="modalImg">
+      <div class="modal-text">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+        <strong id="modalPrice"></strong>
+      </div>
+    </div>
+  </div>
+  
+  <!-- -- 6. زر العودة للأعلى -- -->
+  <a href="#" id="backToTop" aria-label="العودة للأعلى">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      
+      // --- 1. وظائف التنقل بالتبويبات (الجديدة) ---
+      const tabNav = document.getElementById('tabNav');
+      const tabLinks = document.querySelectorAll('.tab-link');
+      const categories = document.querySelectorAll('.category');
+
+      tabNav.addEventListener('click', function(e) {
+        // التأكد من أن النقر كان على زر
+        const clickedTab = e.target.closest('.tab-link');
+        if (!clickedTab) return;
+
+        e.preventDefault();
+        
+        // إزالة 'active' من جميع الأزرار
+        tabLinks.forEach(link => {
+          link.classList.remove('active');
+        });
+        
+        // إضافة 'active' للزر الم المضغوط
+        clickedTab.classList.add('active');
+        
+        const targetId = clickedTab.getAttribute('data-target');
+        
+        // إظهار وإخفاء الأقسام
+        categories.forEach(category => {
+          if (targetId === 'all') {
+            // إظهار الكل
+            category.classList.remove('hidden');
+          } else {
+            // إظهار القسم المستهدف وإخفاء البقية
+            if (category.id === targetId.substring(1)) {
+              category.classList.remove('hidden');
+            } else {
+              category.classList.add('hidden');
+            }
+          }
+        });
+        
+        // العودة لأعلى أقسام المنيو عند تغيير التبويب
+        document.getElementById('menu-categories').scrollIntoView({ behavior: 'smooth' });
+      });
+
+
+      // --- 2. وظائف النافذة المنبثقة (Modal) ---
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modalImg');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalPrice = document.getElementById('modalPrice');
+      const modalClose = document.getElementById('modalClose');
+
+      // يجب إضافة الحدث لجميع عناصر المنيو في الصفحة
+      const menuItems = document.querySelectorAll('.menu-item');
+      menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const imgSrc = item.getAttribute('data-img') || item.querySelector('img').src;
+          const title = item.getAttribute('data-title');
+          const price = item.getAttribute('data-price');
+          const description = item.getAttribute('data-description');
+
+          modalImg.src = imgSrc;
+          modalTitle.textContent = title;
+          modalPrice.textContent = price;
+          modalDescription.textContent = description || "لا يوجد وصف حالياً.";
+          modal.classList.add('active');
+        });
+      });
+
+      // إغلاق النافذة
+      const closeModal = () => {
+        modal.classList.remove('active');
+      };
+      
+      modalClose.addEventListener('click', closeModal);
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+      
+      // --- 3. زر العودة للأعلى ---
+      const backToTopButton = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopButton.style.display = 'block';
+        } else {
+          backToTopButton.style.display = 'none';
+        }
+      });
+      
+    });
+  </script>
+</body>
+</html>
